@@ -1,0 +1,30 @@
+<mvc:View
+    controllerName="com.app.librarysystem.controller.User"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+>
+ <f:DynamicPage
+        id="idUserListPage"
+        headerExpanded="true"
+    >
+    <f:title>
+            <f:DynamicPageTitle id="idUserPageTitle">
+                <f:heading> 
+                    <Title
+                        id="idUserPageHeadingTitle"
+                        text="{i18n>title}"
+                    /> 
+                </f:heading>
+                <f:expandedContent>
+                    <Label
+                        id="idUserListPageECL"
+                        text="{i18n>user}"
+                    />
+                </f:expandedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+    </f:DynamicPage>
+</mvc:View>
