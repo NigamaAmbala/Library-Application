@@ -1,12 +1,5 @@
 namespace my.bookshop;
 
-entity Admin {
-  key ID : Integer;
-  TotalBooks : Integer;
-  ActiveLoans : Integer;
-  TotalUsers : Integer;
-
-}
 entity Books {
   key ID : Integer;
   title  : String;
@@ -16,7 +9,7 @@ entity Books {
   stock : Integer;
   quantityAvailable : Integer;
   language : String;
-  users : Association to many Users on users.books = $self ;
+  //users : Association to many Users on users.books = $self ;
   loans : Association to many Loans on loans.books = $self;
 }
 
@@ -25,10 +18,10 @@ entity Users {
   username : String;
   password : String;
   email : String;
-  phonenumber : Integer;
+  phonenumber :Integer64;
   address : String;
   role : String;
-  books : Association to Books;
+  //books : Association to Books;
   loans : Association to many Loans on loans.users = $self;
   reservations: Association to many  Reservation on reservations.users = $self;
 }

@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="com.app.librarysystem.controller.Admin"
+    controllerName="com.app.librarysystem.controller.AllBooks"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
@@ -7,89 +7,75 @@
     xmlns:f="sap.f"
 >
     <f:DynamicPage
-        id="idAminListPage"
+        id="idAllbooksListPage"
         headerExpanded="true"
     >
         <f:title>
-            <f:DynamicPageTitle id="idAdminPageTitle">
+            <f:DynamicPageTitle id="idAllbokksPageTitle">
                 <f:heading> 
                     <Title
-                        id="idAdminPageHeadingTitle"
-                        text="{i18n>title}"
+                        id="idAllbooksPageHeadingTitle"
+                        text="All Books"
                     />
                 </f:heading>
                 <f:expandedContent>
                     <Label
-                        id="idAdminListPageECL"
-                        text="{i18n>admin}"
+                        id="idAllbooksListPageECL"
+                        text="in library"
                     />
                 </f:expandedContent>
-                <f:navigationActions>
-                    <Button
-                        id="idissuebutton"
-                        text="Issuse Books"
-                        type="Emphasized"
-                    />
-                    <Button
-                         id="idBtnActiveLoan"
-                            text="Active Loan"
-                            icon="sap-icon://activity-individual"
-                            type="Emphasized"
-                            press="PressActiveloans"
-                    />
-                </f:navigationActions>
             </f:DynamicPageTitle>
         </f:title>
         <f:header>
             <f:DynamicPageHeader
-                id="idDynamicPageHeader"
+                id="idDynamicPageHeader12"
                 pinnable="true"
             >
                 <HBox
-                    id="idFilterHLayout"
+                    id="idFilterHLayout12"
                     alignContent="SpaceAround"
                     width="100vw"
                 >
                     <VBox
-                        id="idISBNFilter"
+                        id="idISBNFilter12"
                         class="sapUiSmallMarginEnd"
                     >
                         <Label
-                            id="idISBNFilterLabel"
+                            id="idISBNFilterLabel12"
                             text="{i18n>isbn}"
                         />
                         <MultiInput
-                            id="idISBNFilterValue"
+                            id="idISBNFilterValue12"
                             showSuggestion="false"
                             width=""
                             showValueHelp="false"
                         />
                     </VBox>
                     <VBox
-                        id="idtitleFilter"
+                        id="idtitleFilter12"
                         class="sapUiSmallMarginEnd"
                     >
                         <Label
-                            id="idtitleFilterLabel"
+                            id="idtitleFilterLabel12"
                             text="{i18n>name}"
                         />
                         <MultiInput
-                            id="idtitleFilterValue"
+                            id="idtitleFilterValue12"
                             showSuggestion="false"
                             width=""
                             showValueHelp="false"
                         />
                     </VBox>
                     <VBox
-                        id="iAuthorFilter"
+                        id="iAuthorFilter12"
                         class="sapUiSmallMarginEnd"
                     >
                         <Label
-                            id="iAuthorFilterLabel"
+                            id="iAuthorFilterLabel12"
                             text="{i18n>author}"
                         />
                         <MultiInput
-                            id="iAuthorFilterValue"
+                            id="iAuthorFilterValue12"
                             showSuggestion="false"
                             width=""
                             showValueHelp="false"
@@ -97,15 +83,15 @@
                     </VBox>
 
                     <VBox
-                        id="idbookidFilter"
+                        id="idbookidFilter12"
                         class="sapUiSmallMarginEnd"
                     >
                         <Label 
-                            id="idbookidFilterLabel"
+                            id="idbookidFilterLabel12"
                             text="{i18n>id}"
                         />
                         <MultiInput
-                            id="idbookidFilterValue"
+                            id="idbookidFilterValue12"
                             showSuggestion="false"
                             width=""
                             showValueHelp="false"
@@ -113,33 +99,33 @@
                     </VBox>
 
                     <VBox
-                        id="idGoButton"
+                        id="idGoButton12"
                         class="sapUiSmallMarginEnd"
                     >
                         <Label
-                            id="idGoButtonLabel"
+                            id="idGoButtonLabel12"
                             text=""
                         />
                         <Button
-                            id="idGoButtonValue"
+                            id="idGoButtonValue12"
                             text="Go"
                             type="Emphasized"
-                            press="onGoPress"
+                            press="onGoPressAllBooks"
                         />
                     </VBox>
                     <VBox
-                        id="idClearFilterButton"
+                        id="idClearFilterButton12"
                         class="sapUiSmallMarginEnd"
                     >
                         <Label
-                            id="idClearFilterButtonLabel"
+                            id="idClearFilterButtonLabel12"
                             text=""
                         />
                         <Button
-                            id="idClearFilterButtonValue"
+                            id="idClearFilterButtonValue12"
                             text="Clear Filter"
                             type="Emphasized"
-                            press="onClearFilterPress"
+                            press="onClearFilterPressAllbooks"
                         />
                     </VBox>
                 </HBox>
@@ -147,39 +133,24 @@
         </f:header>
         <f:content>
             <Table
-                id="idBooksTable"
+                id="idAllBooksTable"
                 mode="MultiSelect"
                 alternateRowColors="true"
                 selectionChange="BooksDetails"
                 items="{/Books}"
             >
-            <headerToolbar>
-                    <OverflowToolbar id="idBooksTableHeader">
+                <headerToolbar>
+                    <OverflowToolbar id="idBooksTableHeader12">
                         <Title
-                            id="idBooksheaderTitle"
+                            id="idBooksheaderTitle12"
                             text="Books"
                         />
-                        <ToolbarSpacer id="idTableHeaderSpacer" />
+                        <ToolbarSpacer id="idTableHeaderSpacer12" />
                         <Button
-                            id="idBtnCreate"
-                            icon="sap-icon://add"
-                            tooltip="Create Book"
+                            id="idBtnReserve"
+                            text="Reserve"
                             type="Success"
-                            press="addButton"
-                        />
-                        <Button
-                            id="idBtnDelete"
-                            icon="sap-icon://delete"
-                            tooltip="Delete Book"
-                            type="Negative"
-                            press="DeleteBook"
-                        />
-                        <Button
-                            id="idBtnEdit"
-                            icon="sap-icon://edit"
-                            tooltip="Edit Book"
-                            type="Emphasized"
-                            press="EditBook"
+                            press="reservebutton"
                         />
                     </OverflowToolbar>
                 </headerToolbar>
@@ -275,3 +246,4 @@
         </f:content>
     </f:DynamicPage>
 </mvc:View>
+

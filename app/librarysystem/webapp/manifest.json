@@ -144,9 +144,23 @@
         },
         {
           "name": "RouteUser",
-          "pattern": "User",
+          "pattern": "User/{ID}",
           "target": [
             "TargetUser"
+          ]
+        },
+        {
+          "name": "RouteActiveLoans",
+          "pattern": "ActiveLoans",
+          "target": [
+            "TargetActiveLoans"
+          ]
+        },
+        {
+          "name": "RouteAllBooks",
+          "pattern": "AllBooks",
+          "target": [
+            "TargetAllBooks"
           ]
         }
       ],
@@ -171,6 +185,20 @@
           "clearControlAggregation": false,
           "viewId": "User",
           "viewName": "User"
+        },
+        "TargetActiveLoans": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ActiveLoans",
+          "viewName": "ActiveLoans"
+        },
+        "TargetAllBooks": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AllBooks",
+          "viewName": "AllBooks"
         }
       }
     },

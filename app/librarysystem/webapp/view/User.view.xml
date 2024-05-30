@@ -6,17 +6,17 @@
     xmlns:layout="sap.ui.layout"
     xmlns:f="sap.f"
 >
- <f:DynamicPage
+    <f:DynamicPage
         id="idUserListPage"
         headerExpanded="true"
     >
-    <f:title>
+        <f:title>
             <f:DynamicPageTitle id="idUserPageTitle">
-                <f:heading> 
+                <f:heading>
                     <Title
                         id="idUserPageHeadingTitle"
                         text="{i18n>title}"
-                    /> 
+                    />
                 </f:heading>
                 <f:expandedContent>
                     <Label
@@ -26,5 +26,99 @@
                 </f:expandedContent>
             </f:DynamicPageTitle>
         </f:title>
+        <f:header>
+            <f:DynamicPageHeader
+                id="idDynamicPageHeader"
+                pinnable="true"
+            >
+                <Label text="Hi {username}, welcome to Central library" />
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table
+                id="idActiveloansTable"
+                mode="MultiSelect"
+                alternateRowColors="true"
+                selectionChange="BooksDetails"
+                 items="{loans}"
+               
+            >
+            <headerToolbar>
+                    <OverflowToolbar id="idBooksTableHeader">
+                        <Title
+                            id="idBooksheaderTitle"
+                            text="Barrowed Books"
+                        />
+                        <ToolbarSpacer id="idTableHeaderSpacer" />
+                         <Button
+                            id="idBtnAllbooks"
+                            text="All Books"
+                            type="Success"
+                            icon="sap-icon://education"
+                            press="AllBooks"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+            <Column id="idISBNColumn11">
+                <Title
+                    id="idISBNtitle11"
+                    text="ISBN"
+                />
+            </Column>
+            <Column id="idtitleColumn11">
+                <Title
+                    id="idBooktitletitle11"
+                    text="Title"
+                />
+            </Column>
+            <Column id="idBooksidColumn11">
+                <Title
+                    id="idBooksidtitle11"
+                    text="Books_id"
+                />
+            </Column>
+
+            <Column id="idIssueColumn11">
+                <Title
+                    id="idIssuetitle11"
+                    text="Issue date"
+                />
+            </Column>
+            <Column id="idDueDateColumn11">
+                <Title
+                    id="idDuedatetitle11"
+                    text="Due Date"
+                />
+            </Column>
+        </columns>
+         <items>
+            <ColumnListItem id="idColumnListBarrowedbooks">
+                <cells>
+                    <Text
+                        id="idLoanIdvalue11"
+                        text="{books/ISBN}"
+                    />
+                    <Text
+                        id="idBOOKTILTEvalue11"
+                        text="{books/title}"
+                    />
+                    <Text
+                        id="idbooksIdvalue11"
+                        text="{books_ID}"
+                    />
+                    <Text
+                        id="idIssusedatevalue11"
+                        text="{issuseDate}"
+                    />
+                    <Text
+                        id="idduedatevalue11"
+                        text="{ReturnDate}"
+                    />
+                </cells>
+            </ColumnListItem>
+        </items>
+            </Table>
+        </f:content>
     </f:DynamicPage>
 </mvc:View>
