@@ -62,6 +62,13 @@
                         text="Due Date"
                     />
                 </Column>
+                 <Column id="idQuntityAvailColumn"
+                 visible="false">
+                    <Title
+                        id="idQuntityAvailtitle"
+                        text="quantityAvailable"
+                    />
+                </Column>
             </columns>
 
             <items>
@@ -90,6 +97,10 @@
                         <Text
                             id="idduedatevalue"
                             text="{ReturnDate}"
+                        />
+                        <Text
+                            id="idquantityAvailvalue"
+                            text="{books/quantityAvailable}"
                         />
                     </cells>
                 </ColumnListItem>

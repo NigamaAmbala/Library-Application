@@ -26,9 +26,10 @@
                 </f:expandedContent>
                 <f:navigationActions>
                     <Button
-                        id="idissuebutton"
+                        id="idissuebutton10"
                         text="Issuse Books"
                         type="Emphasized"
+                        press="onIssuebutton"
                     />
                     <Button
                          id="idBtnActiveLoan"

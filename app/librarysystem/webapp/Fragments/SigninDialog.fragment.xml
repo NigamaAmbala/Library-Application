@@ -71,6 +71,7 @@
                     id="idPasswordInput2"
                     value="{localModel>/password}"
                     placeholder="Enter Password"
+                    type="Password"
                 />
                 <Label
                     id="idphonenumberLabel2"

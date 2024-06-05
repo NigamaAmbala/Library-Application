@@ -19,8 +19,11 @@ sap.ui.define(
           oObjectPage.bindElement(`/Users(${ID})`);
         },
         AllBooks : function () {
+          const userId=this.ID;
           const oRouter = this.getOwnerComponent().getRouter();
-           oRouter.navTo("RouteAllBooks")
+           oRouter.navTo("RouteAllBooks", {
+            id:userId
+           })
       }
       });
     }

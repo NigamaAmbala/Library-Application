@@ -62,6 +62,7 @@
                     id="idPasswordInput1"
                     value=""
                     placeholder="Enter Password"
+                    type="Password"
                 />
             </form:SimpleForm>
         </content>

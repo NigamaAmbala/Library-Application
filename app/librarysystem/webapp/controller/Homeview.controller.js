@@ -102,7 +102,7 @@ sap.ui.define([
                         if (oData.results.length > 0) {
                             var userId = oData.results[0].ID;
  
-                            MessageBox.success("Login Successful");
+                            //MessageBox.success("Login Successful");
  
                             var oRouter = this.getOwnerComponent().getRouter();
                             oRouter.navTo("RouteUser", { ID: userId })

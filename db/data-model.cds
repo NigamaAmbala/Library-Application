@@ -9,7 +9,7 @@ entity Books {
   stock : Integer;
   quantityAvailable : Integer;
   language : String;
-  //users : Association to many Users on users.books = $self ;
+  users : Association to Users;
   loans : Association to many Loans on loans.books = $self;
 }
 
@@ -21,7 +21,7 @@ entity Users {
   phonenumber :Integer64;
   address : String;
   role : String;
-  //books : Association to Books;
+  books : Association to many Books on books.users = $self;
   loans : Association to many Loans on loans.users = $self;
   reservations: Association to many  Reservation on reservations.users = $self;
 }

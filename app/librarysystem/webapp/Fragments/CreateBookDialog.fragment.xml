@@ -94,20 +94,12 @@
                     value="{localModel>/stock}"
                 />
                 <Label
-                    id="idquantityAvailableLabel12"
-                    text="QuantityAvailable"
-                />
-                <Input
-                    id="idquantityAvailableInput12"
-                    value="{localModel>/quantityAvailable}"
-                />
-                <Label
                     id="idlanguageLabel12"
                     text="language"
                 />
                 <Input
                     id="idlanguageInput12"
-                    value="{localModel>/language}" 
+                    value="{localModel>/language}"  
                 />
 
             </form:SimpleForm>

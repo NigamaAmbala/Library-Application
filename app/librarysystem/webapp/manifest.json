@@ -158,7 +158,7 @@
         },
         {
           "name": "RouteAllBooks",
-          "pattern": "AllBooks",
+          "pattern": "AllBooks/{id}",
           "target": [
             "TargetAllBooks"
           ]
