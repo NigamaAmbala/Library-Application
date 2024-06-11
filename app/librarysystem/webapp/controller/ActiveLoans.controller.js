@@ -43,6 +43,10 @@ sap.ui.define(
               sap.m.MessageBox.error("Some technical Issue");
             };
             this.byId("idUserLoans").getSelectedItem().getBindingContext().delete("$auto");
+          },
+          onBackbutton:function () {
+            var oRouter=this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteAdmin",{},true);
           }
       });
     }

@@ -9,6 +9,7 @@
     <Page
         id="page"
         title="{i18n>title}"
+        class="Homepageclass"
     >
         <headerContent>
             <MenuButton

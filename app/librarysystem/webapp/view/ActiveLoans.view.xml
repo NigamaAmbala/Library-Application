@@ -5,7 +5,18 @@
     displayBlock="true"
     xmlns="sap.m"
 >
-    <Page id="ActiveLoanid" title="Active Loans">
+    <Page
+        id="ActiveLoanid"
+        title="Active Loans"
+    >
+        <headerContent>
+            <Button
+            id="idbackbutton"
+            text="Back"
+            press="onBackbutton"
+            icon="sap-icon://nav-back">
+            </Button>
+        </headerContent>
         <Table
             id="idUserLoans"
             items="{/Loans}"
@@ -13,7 +24,7 @@
             backgroundDesign="Transparent"
             mode="MultiSelect"
         >
-        <headerToolbar>
+            <headerToolbar>
                 <OverflowToolbar id="idActiveloanHeader">
                     <ToolbarSpacer id="idActiveloanHeaderSpacer1" />
                     <Button
@@ -62,8 +73,10 @@
                         text="Due Date"
                     />
                 </Column>
-                 <Column id="idQuntityAvailColumn"
-                 visible="false">
+                <Column
+                    id="idQuntityAvailColumn"
+                    visible="false"
+                >
                     <Title
                         id="idQuntityAvailtitle"
                         text="quantityAvailable"

@@ -38,6 +38,13 @@
                             type="Emphasized"
                             press="PressActiveloans"
                     />
+                    <Button
+                        id="idLogout1"
+                        text="Logout"
+                        type="Negative"
+                        press="onLogoutbutton1"
+                        icon="sap-icon://log"
+                    />
                 </f:navigationActions>
             </f:DynamicPageTitle>
         </f:title>

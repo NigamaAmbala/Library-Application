@@ -12,7 +12,9 @@ entity Books {
   users : Association to Users;
   loans : Association to many Loans on loans.books = $self;
 }
-
+@assert.unique:{
+username: [username]
+}
 entity Users {
   key ID : Integer;
   username : String;
@@ -32,6 +34,7 @@ entity Loans {
    users : Association to Users;
    issuseDate : Date;
    ReturnDate : Date;
+   notify:String;
 }
 
 entity Reservation {
