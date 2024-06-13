@@ -133,6 +133,11 @@ sap.ui.define(
                     oModel = this.getView().getModel("ModelV2");
                     oPayload.quantityAvailable = oPayload.stock;
                 try {
+                    const oTitleExist = await this.checkTitle(oModel, oPayload.title, oPayload.ISBN)
+                        if (oTitleExist) {
+                            MessageToast.show("Book already exsist")
+                            return
+                        }
                     await this.createData(oModel, oPayload, "/Books");
                     this.getView().byId("idBooksTable").getBinding("items").refresh();
                     this.oCreateBooksDialog.close();
@@ -140,6 +145,25 @@ sap.ui.define(
                     this.oCreateBooksDialog.close();
                     MessageBox.error("Some technical Issue");
                 }
+            },
+            checkTitle: async function (oModel, stitle, sISBN) {
+                return new Promise((resolve, reject) => {
+                    oModel.read("/Books", {
+                        filters: [
+                            new Filter("title", FilterOperator.EQ, stitle),
+                            new Filter("ISBN", FilterOperator.EQ, sISBN)
+ 
+                        ],
+                        success: function (oData) {
+                            resolve(oData.results.length > 0);
+                        },
+                        error: function () {
+                            reject(
+                                "An error occurred while checking username existence."
+                            );
+                        }
+                    })
+                })
             },
             // deleting a book
             DeleteBook: async function () {
@@ -184,7 +208,7 @@ sap.ui.define(
                     this.oIssuebookDailog.close()
                 }
             },
-            //by clicking on issuse button in dialog box
+            //by clicking on issuse button in issue dialog box
             onIssuebtnpress: async function (oEvent) {
                 console.log(this.byId("issuebooksTable").getSelectedItem().getBindingContext().getObject())
                 if (this.byId("issuebooksTable").getSelectedItems().length > 1) {
@@ -195,13 +219,17 @@ sap.ui.define(
                 oAval = oSelectedBook.books.quantityAvailable - 1;
                
                 var current = new Date();
-                let due = new Date(current.getFullYear(), current.getMonth() + 1)
+                let due = new Date(current.getFullYear(), current.getMonth() + 1, current.getDay() + 1)
  
                 const userModel = new sap.ui.model.json.JSONModel({
                     books_ID: oSelectedBook.books.ID,
                     users_ID: oSelectedBook.users.ID,
                     issuseDate: new Date(),
                     ReturnDate: due,
+                    notify:
+                `Your reserved book "
+                ${oSelectedBook.books.title}
+                " is issued`,
                     books: {
                         quantityAvailable: oAval
                     }
@@ -328,7 +356,11 @@ sap.ui.define(
                     // Configure message parser
                     messageParser: sap.ui.model.odata.ODataMessageParser
                 })
-             }
+             },
+             onLogoutbutton1:function () {
+                var oRouter=this.getOwnerComponent().getRouter();
+                oRouter.navTo("RouteHomeview",{},true);
+              }
         });
     }
 );

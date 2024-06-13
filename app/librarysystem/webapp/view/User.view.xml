@@ -24,6 +24,22 @@
                         text="{i18n>user}"
                     />
                 </f:expandedContent>
+                <f:navigationActions>
+                    <Button
+                        id="idLogout"
+                        text="Logout"
+                        type="Negative"
+                        icon="sap-icon://log"
+                        press="onLogoutbutton"
+                    />
+                     <Button
+                        id="idnotification"
+                        text=""
+                        type="Accept"
+                        icon="sap-icon://notification-2"
+                        press="onNotificationFilterPress"
+                    />
+                </f:navigationActions>
             </f:DynamicPageTitle>
         </f:title>
         <f:header>
@@ -31,7 +47,7 @@
                 id="idDynamicPageHeader"
                 pinnable="true"
             >
-                <Label text="Hi {username}, welcome to Central library" />
+                <Label class="classtext" text="Hi {username}, welcome to Central library" />
             </f:DynamicPageHeader>
         </f:header>
         <f:content>

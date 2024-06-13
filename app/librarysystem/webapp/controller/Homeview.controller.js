@@ -139,13 +139,19 @@ sap.ui.define([
             onSignUP:   async function () {
                 const oPayload = this.getView().getModel("localModel").getProperty("/"),
                     oModel = this.getView().getModel("ModelV2");
+                    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                var phoneRegex=/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
+                if(!(emailRegex.test(oPayload.email)&&phoneRegex.test(oPayload.phonenumber))){
+                    MessageBox.success("please enter valid email and phonenumber ")
+                    return
+                }
                 try {
                     await this.createData(oModel, oPayload, "/Users");
                     this.oSigninDailog.close();
                     MessageBox.success("Registration is successful");
                 } catch (error) {
                     this.oSigninDailog.close();
-                    MessageBox.error("Some technical Issue");
+                    MessageBox.error("user already exits");
                 }
             }
             

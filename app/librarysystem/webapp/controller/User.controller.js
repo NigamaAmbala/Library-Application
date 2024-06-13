@@ -1,8 +1,9 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
+        "sap/ui/core/mvc/Controller",
+        "sap/ui/core/Fragment"
     ],
-    function(BaseController) {
+    function(BaseController, Fragment) {
       "use strict";
   
       return BaseController.extend("com.app.librarysystem.controller.User", {
@@ -18,13 +19,40 @@ sap.ui.define(
    
           oObjectPage.bindElement(`/Users(${ID})`);
         },
+        //when you click on Allbooks button in user dashboard
         AllBooks : function () {
           const userId=this.ID;
           const oRouter = this.getOwnerComponent().getRouter();
            oRouter.navTo("RouteAllBooks", {
             id:userId
            })
-      }
+      },
+      onLogoutbutton:function () {
+        var oRouter=this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteHomeview",{},true);
+      },
+      //loading of notification dailog
+      onNotificationFilterPress: async function () {
+        if (!this.oNotificationDialog) {
+            this.oNotificationDialog = await Fragment.load({
+                id: this.getView().getId(),
+                name: "com.app.librarysystem.Fragments.NotificationDailog",
+                controller: this
+            });
+            this.getView().addDependent(this.oNotificationDialog);
+        }
+
+        this.oNotificationDialog.open();
+        const oObjectPage = this.getView().byId("idnotificationDialog");
+        oObjectPage.bindElement(`/Users(${this.ID})`);
+    },
+
+    onCloseNotificationDialog: function () {
+        if (this.oNotificationDialog.isOpen()) {
+            this.oNotificationDialog.close()
+        }
+    },
+
       });
     }
   );
