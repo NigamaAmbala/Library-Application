@@ -21,6 +21,7 @@
                 <f:expandedContent>
                     <Label
                         id="idAdminListPageECL"
+                        class="classtext"
                         text="{i18n>admin}"
                     />
                 </f:expandedContent>
@@ -37,6 +38,13 @@
                             icon="sap-icon://activity-individual"
                             type="Emphasized"
                             press="PressActiveloans"
+                    />
+                    <Button
+                         id="idBtnUserdetails"
+                            text=""
+                            type="Attention"                            
+                            press="PressUsers"
+                            icon="sap-icon://employee-lookup"
                     />
                     <Button
                         id="idLogout1"

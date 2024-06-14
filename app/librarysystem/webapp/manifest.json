@@ -162,7 +162,15 @@
           "target": [
             "TargetAllBooks"
           ]
+        },
+        {
+          "name": "RouteAllUsers",
+          "pattern": "AllUsers",
+          "target": [
+            "TargetAllUsers"
+          ]
         }
+
       ],
       "targets": {
         "TargetHomeview": {
@@ -199,6 +207,13 @@
           "clearControlAggregation": false,
           "viewId": "AllBooks",
           "viewName": "AllBooks"
+        },
+        "TargetAllUsers": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AllUsers",
+          "viewName": "AllUsers"
         }
       }
     },

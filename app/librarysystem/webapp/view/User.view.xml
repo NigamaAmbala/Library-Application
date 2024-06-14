@@ -21,7 +21,8 @@
                 <f:expandedContent>
                     <Label
                         id="idUserListPageECL"
-                        text="{i18n>user}"
+                        class="classtext"
+                        text="Hi {username}, welcome to Central library"
                     />
                 </f:expandedContent>
                 <f:navigationActions>
@@ -47,7 +48,35 @@
                 id="idDynamicPageHeader"
                 pinnable="true"
             >
-                <Label class="classtext" text="Hi {username}, welcome to Central library" />
+                <HBox>
+                    <VBox
+                        id="id1"
+                        class="uservboxcalss"
+                    >
+                        <HBox id="iduserhbox">
+                            <VBox
+                                id="iduservbox"
+                                class="classuservbox"
+                            >
+                                <Label
+                                    id="idusername"
+                                    class="idusernamecss"
+                                    text="User Name: {username}"
+                                />
+                                <Label
+                                    id="idusermail"
+                                    class="idusernamecss"
+                                    text="Email: {email}"
+
+                                /><Label
+                                    id="iduserphno"
+                                    class="idusernamecss"
+                                    text="PH No: {path: 'phonenumber', formatter: '.formatPhoneNumber'}"
+                                />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </HBox>
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
@@ -72,6 +101,13 @@
                             type="Success"
                             icon="sap-icon://education"
                             press="AllBooks"
+                        />
+                        <Button
+                            id="idBtnReservedbooks"
+                            text="Reserved books"
+                            type="Attention"
+                            icon="sap-icon://course-book"
+                            press="onreservedbooksbutton"
                         />
                     </OverflowToolbar>
                 </headerToolbar>

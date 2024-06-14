@@ -227,9 +227,7 @@ sap.ui.define(
                     issuseDate: new Date(),
                     ReturnDate: due,
                     notify:
-                `Your reserved book "
-                ${oSelectedBook.books.title}
-                " is issued`,
+                `Your reserved book " ${oSelectedBook.books.title} " is issued`,
                     books: {
                         quantityAvailable: oAval
                     }
@@ -360,7 +358,13 @@ sap.ui.define(
              onLogoutbutton1:function () {
                 var oRouter=this.getOwnerComponent().getRouter();
                 oRouter.navTo("RouteHomeview",{},true);
-              }
+              },
+              // when you click on AllUsers button in Admin page
+              PressUsers: function () {
+                const oRouter = this.getRouter();
+                oRouter.navTo("RouteAllUsers")
+            },
+              
         });
     }
 );

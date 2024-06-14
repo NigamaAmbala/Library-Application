@@ -52,7 +52,30 @@ sap.ui.define(
             this.oNotificationDialog.close()
         }
     },
+    formatPhoneNumber: function(phoneNumber) {             
+      if (typeof phoneNumber === "string") {                 
+      return phoneNumber.replace(/,/g, "");             
+      }             
+      return phoneNumber; 
+      },
+      onreservedbooksbutton : async function () {
+        if (!this.oReservedbookDailog) {
+            this.oReservedbookDailog = await Fragment.load({
+                id: this.getView().getId(),
+                name: "com.app.librarysystem.Fragments.ReservedBooks",
+                controller: this
+            });
+            this.getView().addDependent(this.oReservedbookDailog);
+        }
 
+        this.oReservedbookDailog.open();
+    },
+
+    onreservedbookscancelbtn: function () {
+        if (this.oReservedbookDailog.isOpen()) {
+            this.oReservedbookDailog.close()
+        }
+    },
       });
     }
   );

@@ -23,7 +23,8 @@ sap.ui.define([
                     username: "",
                     password: "",
                     email: "",
-                    phonenumber:""
+                    phonenumber:"",
+                    address:""
                 });
                 this.getView().setModel(oLocalModel, "localModel");
 

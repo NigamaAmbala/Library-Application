@@ -33,7 +33,7 @@
             </MenuButton>
              <Button
                 id="idsignbutton12"
-                text="Sign in"
+                text="Sign Up"
                 press="Signbutton"
             />
 

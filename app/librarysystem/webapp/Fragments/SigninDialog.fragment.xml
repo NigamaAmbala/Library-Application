@@ -8,12 +8,12 @@
         resizable="true"
         draggable="true"
         contentWidth="30%"
-        title="Sign in"
+        title="Sign Up"
     >
         <beginButton>
             <Button
                 id="idsignUPButton12"
-                text="Sign In"
+                text="Sign Up"
                 press="onSignUP"
                 type="Success"
             />
@@ -82,7 +82,15 @@
                     value="{localModel>/phonenumber}"
                     placeholder="Enter phonenumber"
                 />
-
+                <Label
+                    id="idaddressLabel2"
+                    text="Address"
+                />
+                <Input
+                    id="idaddressInput2"
+                    value="{localModel>/address}"
+                    placeholder="Enter address"
+                />
             </form:SimpleForm>
         </content>
     </Dialog>

@@ -54,6 +54,12 @@
                         text="UserID"
                     />
                 </Column>
+                <Column id="idUsernameColumn">
+                    <Title
+                        id="idUsername"
+                        text="User Name"
+                    />
+                </Column>
                 <Column id="idBooksidColumn">
                     <Title
                         id="idBooksidtitle"
@@ -98,6 +104,10 @@
                         <Text
                             id="idUserIdvalueText"
                             text="{users_ID}"
+                        />
+                        <Text
+                            id="idUsernamevalueText"
+                            text="{users/username}"
                         />
                         <Text
                             id="idbooksIdvalue"
