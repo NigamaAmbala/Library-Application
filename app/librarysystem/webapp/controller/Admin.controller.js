@@ -135,7 +135,7 @@ sap.ui.define(
                 try {
                     const oTitleExist = await this.checkTitle(oModel, oPayload.title, oPayload.ISBN)
                         if (oTitleExist) {
-                            MessageToast.show("Book already exsist")
+                            MessageBox.success("Book already exsist")
                             return
                         }
                     await this.createData(oModel, oPayload, "/Books");
@@ -167,21 +167,48 @@ sap.ui.define(
             },
             // deleting a book
             DeleteBook: async function () {
-
-                var oSelected = this.byId("idBooksTable").getSelectedItem();
-                if (oSelected) {
-                    var oID = oSelected.getBindingContext().getObject().ID;
-
-                    oSelected.getBindingContext().delete("$auto").then(function () {
-                        // MessageToast.show(oID + " SuccessFully Deleted");
-                    },
-                        function (oError) {
-                            MessageToast.show("Deletion Error: ", oError);
-                        });
-                    this.getView().byId("idBooksTable").getBinding("items").refresh();
-
+                var that = this; // Preserve 'this' context
+                var aSelectedItems = this.byId("idBooksTable").getSelectedItems();
+                if (aSelectedItems.length > 0) {
+                    MessageBox.confirm("Are you sure you want to delete the selected book(s)?", {
+                        title: "Confirm Deletion",
+                        onClose: function (oAction) {
+                            if (oAction === MessageBox.Action.OK) {
+                                var aISBNs = [];
+                                aSelectedItems.forEach(function (oSelectedItem) {
+                                    var sISBN = oSelectedItem.getBindingContext().getObject().title;
+                                    var oQuantity1 = oSelectedItem.getBindingContext().getObject().stock
+                                    var oAQuantity1 = oSelectedItem.getBindingContext().getObject().quantityAvailable
+ 
+                                    if (oQuantity1 == oAQuantity1) {
+                                        aISBNs.push(sISBN);
+                                        oSelectedItem.getBindingContext().delete("$auto");
+                                    } else {
+                                        MessageBox.error("Book has a Active loan");
+                                        return; // Stop further execution
+                                    }
+                                });
+ 
+                                Promise.all(aISBNs.map(function (sISBN) {
+                                    return new Promise(function (resolve, reject) {
+                                        resolve(sISBN + " Successfully Deleted");
+                                    });
+                                })).then(function (aMessages) {
+                                    aMessages.forEach(function (sMessage) {
+                                        MessageBox.success(sMessage);
+                                    });
+                                }).catch(function (oError) {
+                                    MessageBox.error("Deletion Error: " + oError);
+                                });
+ 
+                                that.getView().byId("idBooksTable").removeSelections(true);
+                                that.getView().byId("idBooksTable").getBinding("items").refresh();
+                            }
+                        }
+                    });
+                    jQuery('.sapMMessageBoxText').css('color', 'red');
                 } else {
-                    MessageToast.show("Please Select a Row to Delete");
+                    MessageBox.error("Please Select Rows to Delete");
                 }
             },
             // when you press Active lone it route to Activeloan page
